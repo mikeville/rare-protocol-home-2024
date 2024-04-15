@@ -1,5 +1,5 @@
-<!DOCTYPE html><!--  test This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Sun Apr 14 2024 20:44:20 GMT+0000 (Coordinated Universal Time)  -->
+<!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
+<!--  Last Published: Mon Apr 15 2024 14:10:08 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6606d3dbf2b52cd0930b58d9" data-wf-site="6606d3daf2b52cd0930b58d3">
 <head>
   <meta charset="utf-8">
@@ -50,7 +50,7 @@
         </div>
       </div>
       <div id="w-node-ecdc8f0c-8609-fd1b-33c5-e47abd6633b0-930b58d9" class="col-mid hero">
-        <div id="w-node-ecdc8f0c-8609-fd1b-33c5-e47abd6633b1-930b58d9" class="stack temp-image">
+        <div id="w-node-ecdc8f0c-8609-fd1b-33c5-e47abd6633b1-930b58d9" class="stack">
           <div id="w-node-ecdc8f0c-8609-fd1b-33c5-e47abd6633b2-930b58d9" class="stack__layer hero-image-container">
             <div class="img-cycler--hero w-embed w-script">
               <style>
@@ -76,16 +76,14 @@
                 <img id="currentImage--hero" src="/art/art1-(Compressify.io).webp" alt="Artwork">
               </div>
               <script>
-  (function() {
+   (function() {
     var currentImageIndex = 1;
     var totalImages = 22; // Set this to the total number of images
     var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
-
     function cycleImagesHero() {
         if(currentImageIndex > totalImages) {
             currentImageIndex = 1;
         }
-
         var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
         var img = new Image();
         img.onload = function() {
@@ -99,15 +97,12 @@
             // Schedule the next cycle, even on error
             scheduleNextCycle();
         };
-
         img.src = nextImageSrc;
     }
-
     function scheduleNextCycle() {
         var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
         setTimeout(cycleImagesHero, randomDuration);
     }
-
     // Start the initial cycle
     scheduleNextCycle();
   })();
@@ -159,7 +154,7 @@
                 <p class="highlight highlight--caps2 highlight--gold-mobile">Explorers</p>
               </div>
               <div id="w-node-ecdc8f0c-8609-fd1b-33c5-e47abd6633dc-930b58d9">
-                <p class="highlight highlight--white2 highlight--caption">Stake your claim in the new territory with $RARE</p>
+                <p class="highlight highlight--white2 highlight--caption">Hold $RARE to stake your claim in the new territory</p>
               </div>
             </div>
             <div id="w-node-ecdc8f0c-8609-fd1b-33c5-e47abd6633df-930b58d9" class="separator hide-desktop">
@@ -208,32 +203,40 @@
           <script>
   (function() {
     var currentImageIndex = 1;
-    var totalImages = 3; // Set this to the total number of images
-    var imageFolder = '/art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
+    var totalImages = 22; // Set this to the total number of images
+    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
     function cycleImagesStats() {
         if(currentImageIndex > totalImages) {
             currentImageIndex = 1;
         }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '.png';
+        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
         var img = new Image();
         img.onload = function() {
             document.getElementById('currentImage--stats').src = this.src;
             currentImageIndex++;
+            // Schedule the next cycle
+            scheduleNextCycle();
         };
         img.onerror = function() {
             currentImageIndex = 1;
-            document.getElementById('currentImage--stats').src = imageFolder + 'art' + currentImageIndex + '.png';
+            // Schedule the next cycle, even on error
+            scheduleNextCycle();
         };
         img.src = nextImageSrc;
     }
-    setInterval(cycleImagesStats, 690);
+    function scheduleNextCycle() {
+        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
+        setTimeout(cycleImagesStats, randomDuration);
+    }
+    // Start the initial cycle
+    scheduleNextCycle();
   })();
 </script>
         </div>
       </div>
       <div class="background-dark-grey"></div>
     </div>
-    <div class="w-layout-blockcontainer subsection3 temp-image w-container">
+    <div class="w-layout-blockcontainer subsection3 w-container">
       <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be66-930b58d9" class="col-1row">
         <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be67-930b58d9" class="stack">
           <div class="stack__layer"><img src="images/SuperRare-Symbol-white.svg" loading="lazy" alt="" class="stat-group__img-diamond">
@@ -283,7 +286,7 @@
           </div>
         </div>
       </div>
-      <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c100-930b58d9" class="col-mid temp-image">
+      <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c100-930b58d9" class="col-mid">
         <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c101-930b58d9" class="jewel-box2 jewel-box--image jewel-box--rare"><img src="images/SuperRare-Symbol-black.svg" loading="lazy" alt="" class="rare-box--image-diamond">
           <div class="caption headline--rare">$RARE</div>
           <div class="highlight--caps2">The art coin</div>
@@ -313,25 +316,33 @@
                 <script>
   (function() {
     var currentImageIndex = 1;
-    var totalImages = 3; // Set this to the total number of images
-    var imageFolder = '/art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
+    var totalImages = 22; // Set this to the total number of images
+    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
     function cycleImagesRare() {
         if(currentImageIndex > totalImages) {
             currentImageIndex = 1;
         }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '.png';
+        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
         var img = new Image();
         img.onload = function() {
             document.getElementById('currentImage--rare').src = this.src;
             currentImageIndex++;
+            // Schedule the next cycle
+            scheduleNextCycle();
         };
         img.onerror = function() {
             currentImageIndex = 1;
-            document.getElementById('currentImage--rare').src = imageFolder + 'art' + currentImageIndex + '.png';
+            // Schedule the next cycle, even on error
+            scheduleNextCycle();
         };
         img.src = nextImageSrc;
     }
-    setInterval(cycleImagesRare, 690);
+    function scheduleNextCycle() {
+        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
+        setTimeout(cycleImagesRare, randomDuration);
+    }
+    // Start the initial cycle
+    scheduleNextCycle();
   })();
 </script>
               </div>
@@ -501,7 +512,7 @@
       </div>
       <div id="w-node-_7822d403-2309-38ee-82e6-b43f07fa7531-930b58d9" class="col-mid">
         <div id="w-node-_08afb6cc-dcc8-e7dd-6657-449bb5fa00bf-930b58d9" class="stack">
-          <div id="w-node-_08afb6cc-dcc8-e7dd-6657-449bb5fa00c0-930b58d9" class="stack__layer temp-image">
+          <div id="w-node-_08afb6cc-dcc8-e7dd-6657-449bb5fa00c0-930b58d9" class="stack__layer">
             <div class="w-embed w-script">
               <style>
   #imageContainer--staking {
@@ -524,25 +535,33 @@
               <script>
   (function() {
     var currentImageIndex = 1;
-    var totalImages = 3; // Set this to the total number of images
-    var imageFolder = '/art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
+    var totalImages = 22; // Set this to the total number of images
+    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
     function cycleImagesStaking() {
         if(currentImageIndex > totalImages) {
             currentImageIndex = 1;
         }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '.png';
+        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
         var img = new Image();
         img.onload = function() {
             document.getElementById('currentImage--staking').src = this.src;
             currentImageIndex++;
+            // Schedule the next cycle
+            scheduleNextCycle();
         };
         img.onerror = function() {
             currentImageIndex = 1;
-            document.getElementById('currentImage--staking').src = imageFolder + 'art' + currentImageIndex + '.png';
+            // Schedule the next cycle, even on error
+            scheduleNextCycle();
         };
         img.src = nextImageSrc;
     }
-    setInterval(cycleImagesStaking, 690);
+    function scheduleNextCycle() {
+        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
+        setTimeout(cycleImagesStaking, randomDuration);
+    }
+    // Start the initial cycle
+    scheduleNextCycle();
   })();
 </script>
             </div>
@@ -725,7 +744,7 @@
       </div>
     </div>
   </section>
-  <section class="section temp-image">
+  <section class="section">
     <div class="background-wrapper">
       <div class="background-image">
         <div class="image-cycler__child w-embed w-script">
@@ -747,25 +766,33 @@
           <script>
   (function() {
     var currentImageIndex = 1;
-    var totalImages = 3; // Set this to the total number of images
-    var imageFolder = '/art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
+    var totalImages = 22; // Set this to the total number of images
+    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
     function cycleImagesFull() {
         if(currentImageIndex > totalImages) {
             currentImageIndex = 1;
         }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '.png';
+        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
         var img = new Image();
         img.onload = function() {
             document.getElementById('currentImage--full').src = this.src;
             currentImageIndex++;
+            // Schedule the next cycle
+            scheduleNextCycle();
         };
         img.onerror = function() {
             currentImageIndex = 1;
-            document.getElementById('currentImage--full').src = imageFolder + 'art' + currentImageIndex + '.png';
+            // Schedule the next cycle, even on error
+            scheduleNextCycle();
         };
         img.src = nextImageSrc;
     }
-    setInterval(cycleImagesFull, 690);
+    function scheduleNextCycle() {
+        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
+        setTimeout(cycleImagesFull, randomDuration);
+    }
+    // Start the initial cycle
+    scheduleNextCycle();
   })();
 </script>
         </div>
