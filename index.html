@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Mon Apr 15 2024 14:10:08 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Mon Apr 15 2024 15:20:51 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6606d3dbf2b52cd0930b58d9" data-wf-site="6606d3daf2b52cd0930b58d3">
 <head>
   <meta charset="utf-8">
@@ -73,7 +73,7 @@
   }
 </style>
               <div id="imageContainer--hero">
-                <img id="currentImage--hero" src="/art/art1-(Compressify.io).webp" alt="Artwork">
+                <img id="currentImage--hero" src="art/art1-(Compressify.io).webp" alt="Artwork">
               </div>
               <script>
    (function() {
@@ -198,7 +198,7 @@
   }
 </style>
           <div id="imageContainer--stats">
-            <img id="currentImage--stats" src="/art/art1.png" alt="Artwork">
+            <img id="currentImage--stats" src="art/art1-(Compressify.io).webp" alt="Artwork">
           </div>
           <script>
   (function() {
@@ -286,7 +286,7 @@
           </div>
         </div>
       </div>
-      <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c100-930b58d9" class="col-mid">
+      <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c100-930b58d9" class="col-mid col-mid--rare">
         <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c101-930b58d9" class="jewel-box2 jewel-box--image jewel-box--rare"><img src="images/SuperRare-Symbol-black.svg" loading="lazy" alt="" class="rare-box--image-diamond">
           <div class="caption headline--rare">$RARE</div>
           <div class="highlight--caps2">The art coin</div>
@@ -311,7 +311,7 @@
   }
 </style>
                 <div id="imageContainer--rare">
-                  <img id="currentImage--rare" src="/art/art1.png" alt="Artwork">
+                  <img id="currentImage--rare" src="art/art1-(Compressify.io).webp" alt="Artwork">
                 </div>
                 <script>
   (function() {
@@ -384,7 +384,7 @@
           </div>
         </div>
       </div>
-      <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c3-930b58d9" class="col-mid"><img src="images/placeholder-sr-screenshot.png" loading="lazy" id="w-node-_10f12b85-b02c-8179-07ee-9554f993eb9d-930b58d9" sizes="(max-width: 479px) 80vw, (max-width: 767px) 62vw, (max-width: 991px) 4vw, 3vw" alt="" srcset="images/placeholder-sr-screenshot-p-500.png 500w, images/placeholder-sr-screenshot-p-800.png 800w, images/placeholder-sr-screenshot.png 868w" class="img-sr-screenshot"></div>
+      <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c3-930b58d9" class="col-mid"><img src="images/placeholder-sr-screenshot.png" loading="lazy" id="w-node-_10f12b85-b02c-8179-07ee-9554f993eb9d-930b58d9" sizes="(max-width: 479px) 80vw, (max-width: 767px) 87vw, (max-width: 991px) 4vw, 3vw" alt="" srcset="images/placeholder-sr-screenshot-p-500.png 500w, images/placeholder-sr-screenshot-p-800.png 800w, images/placeholder-sr-screenshot.png 868w" class="img-sr-screenshot"></div>
       <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c7-930b58d9" class="col-3row">
         <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c8-930b58d9" class="col-3row__mid">
           <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c9-930b58d9" class="text-body">The first premiere marketplace for onchain artistry</div>
@@ -433,30 +433,38 @@
   }
 </style>
           <div id="imageContainer--dao">
-            <img id="currentImage--dao" src="/art/art1.png" alt="Artwork">
+            <img id="currentImage--dao" src="art/art1-(Compressify.io).webp" alt="Artwork">
           </div>
           <script>
-  (function() {
+   (function() {
     var currentImageIndex = 1;
-    var totalImages = 3; // Set this to the total number of images
-    var imageFolder = '/art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
+    var totalImages = 22; // Set this to the total number of images
+    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
     function cycleImagesDao() {
         if(currentImageIndex > totalImages) {
             currentImageIndex = 1;
         }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '.png';
+        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
         var img = new Image();
         img.onload = function() {
             document.getElementById('currentImage--dao').src = this.src;
             currentImageIndex++;
+            // Schedule the next cycle
+            scheduleNextCycle();
         };
         img.onerror = function() {
             currentImageIndex = 1;
-            document.getElementById('currentImage--dao').src = imageFolder + 'art' + currentImageIndex + '.png';
+            // Schedule the next cycle, even on error
+            scheduleNextCycle();
         };
         img.src = nextImageSrc;
     }
-    setInterval(cycleImagesDao, 690);
+    function scheduleNextCycle() {
+        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
+        setTimeout(cycleImagesDao, randomDuration);
+    }
+    // Start the initial cycle
+    scheduleNextCycle();
   })();
 </script>
         </div>
@@ -530,7 +538,7 @@
   }
 </style>
               <div id="imageContainer--staking">
-                <img id="currentImage--staking" src="/art/art1.png" alt="Artwork">
+                <img id="currentImage--staking" src="art/art1-(Compressify.io).webp" alt="Artwork">
               </div>
               <script>
   (function() {
@@ -566,7 +574,7 @@
 </script>
             </div>
           </div>
-          <div id="w-node-_08afb6cc-dcc8-e7dd-6657-449bb5fa00c2-930b58d9" class="stack__layer"><img src="images/placeholder-staking3.png" loading="lazy" sizes="(max-width: 479px) 83vw, (max-width: 767px) 62vw, 160px" srcset="images/placeholder-staking3-p-500.png 500w, images/placeholder-staking3-p-800.png 800w, images/placeholder-staking3-p-1080.png 1080w, images/placeholder-staking3.png 1440w" alt="" class="image img-staking-graphic"></div>
+          <div id="w-node-_08afb6cc-dcc8-e7dd-6657-449bb5fa00c2-930b58d9" class="stack__layer"><img src="images/placeholder-staking3.png" loading="lazy" sizes="(max-width: 479px) 83vw, (max-width: 767px) 87vw, 160px" srcset="images/placeholder-staking3-p-500.png 500w, images/placeholder-staking3-p-800.png 800w, images/placeholder-staking3-p-1080.png 1080w, images/placeholder-staking3.png 1440w" alt="" class="image img-staking-graphic"></div>
         </div>
       </div>
       <div id="w-node-_7822d403-2309-38ee-82e6-b43f07fa7538-930b58d9" class="col-3row">
@@ -610,9 +618,20 @@
           </div>
         </div>
       </div>
-      <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14e7-930b58d9" class="col-mid"><img src="images/rare-network.png" loading="lazy" id="w-node-_8a57db74-fa38-1141-0bb6-80be7a158726-930b58d9" sizes="(max-width: 479px) 80vw, (max-width: 767px) 62vw, (max-width: 991px) 4vw, 3vw" alt="" srcset="images/rare-network-p-500.png 500w, images/rare-network.png 833w" class="image">
-        <div id="w-node-a027056b-bd8c-4a51-8d4e-afb2cdb08d65-930b58d9" class="partner-list-wrapper w-richtext">
-          <ul role="list">
+      <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14e7-930b58d9" class="col-mid"><img src="images/network-graphic.svg" loading="lazy" id="w-node-_8a57db74-fa38-1141-0bb6-80be7a158726-930b58d9" alt="" class="image img-network-diagram"></div>
+      <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14ee-930b58d9" class="col-3row">
+        <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14ef-930b58d9" class="col-3row__mid">
+          <div class="text-body">Join us in changing the way art is created, experienced, valued &amp; exchanged.</div>
+          <a href="https://docs.rare.xyz/" class="button button--secondary-black w-button">Developer docs</a>
+          <a href="https://superrare.notion.site/Rare-Grants-af39b00269304ce8bbb4e2360137c50b" class="button button--secondary-black w-button">Explore grants</a>
+        </div>
+      </div>
+    </div>
+    <div class="w-layout-blockcontainer subsection3 subsection--partners w-container">
+      <div id="w-node-_6e969bfa-cba0-b6cd-ace8-5fc897153dd0-930b58d9" class="partners-container">
+        <div class="text-body highlight--caps2">Partners &amp; Integrations</div>
+        <div id="w-node-_5cfa8449-6abd-0ad3-1ee7-635f2c5dab13-930b58d9" class="partner-list-wrapper w-richtext">
+          <ul role="list" class="partner-list">
             <li>Sothebys</li>
             <li>•</li>
             <li>Transient Labs</li>
@@ -733,15 +752,6 @@
           </ul>
         </div>
       </div>
-      <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14ee-930b58d9" class="col-3row">
-        <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14ef-930b58d9" class="col-3row__mid">
-          <div class="text-body">Join us in changing the way art is created, experienced, valued &amp; exchanged.</div>
-        </div>
-        <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14f2-930b58d9" class="col-3row__bottom">
-          <a href="https://superrare.notion.site/Rare-Grants-af39b00269304ce8bbb4e2360137c50b" class="button button--secondary-black w-button">Explore grants</a>
-          <a href="https://docs.rare.xyz/" class="button button--secondary-black w-button">Developer docs</a>
-        </div>
-      </div>
     </div>
   </section>
   <section class="section">
@@ -749,19 +759,20 @@
       <div class="background-image">
         <div class="image-cycler__child w-embed w-script">
           <style>
-  #imageContainer--full {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   #imageContainer--full img {
-    max-width: none;
-    min-width: 100vw;
-    min-height: 100vh;
+    width: 100vw;
+    height: auto;
+    min-height: 600px;
+    object-fit: cover
+  }
+  @media screen and (max-width: 479px) {
+    #imageContainer--full img {
+      min-height: 100vh;
+    }
   }
 </style>
           <div id="imageContainer--full">
-            <img id="currentImage--full" src="/art/art1.png" alt="Artwork">
+            <img id="currentImage--full" src="art/art1-(Compressify.io).webp" alt="Artwork">
           </div>
           <script>
   (function() {
