@@ -59,7 +59,7 @@ li {
   color: var(--white);
 }
 
-.section.section--light {
+.section.section--light, .section.section--art-credits {
   background-color: var(--white);
 }
 
@@ -136,6 +136,7 @@ li {
 }
 
 .subsection3.subsection--nav {
+  grid-column-gap: 0px;
   grid-template-rows: auto;
   position: static;
   top: 0%;
@@ -518,7 +519,7 @@ li {
 .background-dark-grey {
   z-index: -10;
   background-color: var(--black);
-  opacity: .9;
+  opacity: .8;
   flex-flow: column;
   justify-content: center;
   height: 100%;
@@ -537,7 +538,7 @@ li {
 
 .background-gold {
   background-color: var(--gold);
-  opacity: .94;
+  opacity: .9;
   position: absolute;
   top: 0%;
   bottom: 0%;

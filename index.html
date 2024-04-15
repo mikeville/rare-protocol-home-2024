@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Mon Apr 15 2024 19:47:46 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Mon Apr 15 2024 21:00:31 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6606d3dbf2b52cd0930b58d9" data-wf-site="6606d3daf2b52cd0930b58d3">
 <head>
   <meta charset="utf-8">
@@ -27,7 +27,7 @@
         <a href="https://docs.rare.xyz/" class="nav-link nav-link--first w-nav-link">Docs</a>
         <a href="https://superrare.notion.site/Rare-Grants-af39b00269304ce8bbb4e2360137c50b" class="nav-link w-nav-link">Grants</a>
         <a href="https://superrare.com/" class="nav-link w-nav-link">SuperRare</a>
-        <a href="https://app.rare.xyz/" class="nav-link w-nav-link">Curation Staking</a>
+        <a href="https://app.rare.xyz/" class="nav-link w-nav-link">Stake</a>
         <a href="https://twitter.com/rare_protocol" class="nav-link nav-link--last w-nav-link">Follow</a>
         <a href="https://docs.rare.xyz/staking-on-the-rare-dapp/how-to-get-usdrare" class="nav-link hide-desktop-only w-nav-link">Get $RARE</a>
       </nav>
@@ -193,8 +193,7 @@
     width: 100%;
   }
   #imageContainer--stats img {
-    width: 100%;
-    min-height: 10000px;
+    width: 100vw;
   }
 </style>
           <div id="imageContainer--stats">
@@ -225,7 +224,7 @@
         img.src = nextImageSrc;
     }
     function scheduleNextCycle() {
-        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
+        var randomDuration = Math.random() * 1000 + 800; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
         setTimeout(cycleImagesStats, randomDuration);
     }
     // Start the initial cycle
@@ -429,12 +428,12 @@
   #imageContainer--dao {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: top;
+    position: relative;
+    width: 100%;
   }
   #imageContainer--dao img {
-    max-width: none;
-    min-width: 10000px;
-    min-height: 100vh;
+    width: 100vw;
   }
 </style>
           <div id="imageContainer--dao">
@@ -465,7 +464,7 @@
         img.src = nextImageSrc;
     }
     function scheduleNextCycle() {
-        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
+        var randomDuration = Math.random() * 1000 + 800; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
         setTimeout(cycleImagesDao, randomDuration);
     }
     // Start the initial cycle
@@ -540,6 +539,7 @@
     width: auto; 
     height: 40%;
     filter: brightness(200%) contrast(200%) saturate(0%);
+    opacity: .7;
   }
 </style>
               <div id="imageContainer--staking">
@@ -845,7 +845,6 @@
             <div>Follow us on <a href="https://twitter.com/rare_protocol" class="link--inline">Twitter</a> for updates</div>
           </div>
         </div>
-        <div id="w-node-_9dc68cfd-3540-fe2e-1f78-ffca4744ea1d-930b58d9"></div>
       </div>
     </div>
   </section>
