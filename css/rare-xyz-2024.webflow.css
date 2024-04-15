@@ -407,7 +407,7 @@ li {
 }
 
 .nav-link:hover {
-  z-index: 10;
+  z-index: 20;
   text-decoration: underline;
 }
 
@@ -426,7 +426,7 @@ li {
 }
 
 .navbar {
-  z-index: 10;
+  z-index: 20;
   background-color: var(--none);
   margin-top: 48px;
   margin-bottom: 72px;
