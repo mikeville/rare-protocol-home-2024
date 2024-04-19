@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Wed Apr 17 2024 20:38:06 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Fri Apr 19 2024 21:24:11 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="6606d3dbf2b52cd0930b58d9" data-wf-site="6606d3daf2b52cd0930b58d3">
 <head>
   <meta charset="utf-8">
@@ -41,17 +41,19 @@
   </div>
   <section class="section section--hero">
     <div class="w-layout-blockcontainer subsection3 subsection--hero w-container">
-      <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640ac-930b58d9" class="col-1row">
-        <div class="stack z-bumper">
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640ae-930b58d9" class="stack__layer"><img src="images/rare-radial-04.svg" loading="lazy" alt="" class="img-sparkle"></div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640b0-930b58d9" class="stack__layer">
+      <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a748f7-930b58d9" class="col-1row">
+        <div class="stack">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a748f9-930b58d9" class="stack__layer">
+            <div class="lottie-sparkle" data-w-id="3366d8c2-122b-9ef4-c6ad-385f41a748fa" data-animation-type="lottie" data-src="documents/data.json" data-loop="0" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="7.083333333333333" data-duration="0"></div>
+          </div>
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a748fb-930b58d9" class="stack__layer">
             <p class="highlight highlight--caps2">Welcome to</p>
           </div>
         </div>
       </div>
-      <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640b3-930b58d9" class="col-mid hero">
-        <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640b4-930b58d9" class="stack">
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640b5-930b58d9" class="stack__layer hero-image-container">
+      <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a748fe-930b58d9" class="col-mid hero">
+        <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a748ff-930b58d9" class="stack">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74900-930b58d9" class="stack__layer hero-image-container">
             <div class="img-cycler--hero w-embed w-script">
               <style>
   #imageContainer--hero {
@@ -80,46 +82,52 @@
     max-width: none; /* Reset any max-width */
     width: auto; /* Width will vary */
     height: 80%; /* Fixed height for the image */
+    border-radius: 4px;
   }
 </style>
               <div id="imageContainer--hero">
                 <img id="currentImage--hero" src="art/art1-(Compressify.io).webp" alt="Artwork">
               </div>
               <script>
-   (function() {
-    var currentImageIndex = 1;
-    var totalImages = 22; // Set this to the total number of images
-    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
-    function cycleImagesHero() {
-        if(currentImageIndex > totalImages) {
-            currentImageIndex = 1;
-        }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
-        var img = new Image();
-        img.onload = function() {
-            document.getElementById('currentImage--hero').src = this.src;
-            currentImageIndex++;
-            // Schedule the next cycle
-            scheduleNextCycle();
-        };
-        img.onerror = function() {
-            currentImageIndex = 1;
-            // Schedule the next cycle, even on error
-            scheduleNextCycle();
-        };
-        img.src = nextImageSrc;
-    }
-    function scheduleNextCycle() {
-        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
-        setTimeout(cycleImagesHero, randomDuration);
-    }
-    // Start the initial cycle
-    scheduleNextCycle();
-  })();
+                  (function() {
+                  var currentImageIndex = 1;
+                  var totalImages = 22; // Set this to the total number of images
+                  var imageFolder = 'art/';
+                  function cycleImagesHero() {
+                    if(currentImageIndex > totalImages) {
+                      currentImageIndex = 1;
+                    }
+                    var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
+                    var img = new Image();
+                    img.onload = function() {
+                      document.getElementById('currentImage--hero').src = this.src;
+                      currentImageIndex++;
+                      // Determine whether to do a rapid cycle or a pause
+                      if (shouldPauseHero()) {
+                        // Pause for a second on this image
+                        setTimeout(cycleImagesHero, 1000);
+                      } else {
+                        // Rapid cycle through the next few images
+                        setTimeout(cycleImagesHero, 100);
+                      }
+                    };
+                    img.onerror = function() {
+                      currentImageIndex = 1;
+                      setTimeout(cycleImagesHero, 1000); // Pause before trying again
+                    };
+                    img.src = nextImageSrc;
+                  }
+                  function shouldPauseHero() {
+                    // Randomly decide to pause for a second on an image
+                    return Math.random() < 0.2; 
+                  }
+                  // Start the initial cycle
+                  cycleImagesHero(); 
+                })();
 </script>
             </div>
           </div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640b7-930b58d9" class="stack__layer">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74902-930b58d9" class="stack__layer">
             <p class="highlight highlight--caps2 highlight--white2 highlight--large">The</p>
             <p class="highlight highlight--caps2 highlight--white2 highlight--large">internet</p>
             <p class="highlight highlight--caps2 highlight--white2 highlight--large">of</p>
@@ -127,28 +135,30 @@
           </div>
         </div>
       </div>
-      <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640c0-930b58d9" class="col-1row">
-        <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640c1-930b58d9" class="stack">
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640c2-930b58d9" class="stack__layer"><img src="images/rare-radial-05.svg" loading="lazy" alt="" class="img-sparkle"></div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640c4-930b58d9" class="stack__layer">
+      <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7490b-930b58d9" class="col-1row">
+        <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7490c-930b58d9" class="stack">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7490d-930b58d9" class="stack__layer">
+            <div class="lottie-sparkle temp-flip-3" data-w-id="3366d8c2-122b-9ef4-c6ad-385f41a7490e" data-animation-type="lottie" data-src="documents/data.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="7.083333333333333" data-duration="0"></div>
+          </div>
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7490f-930b58d9" class="stack__layer">
             <p class="highlight highlight--caps2">Run by you</p>
           </div>
         </div>
       </div>
     </div>
     <div class="w-layout-blockcontainer subsection3 subsection--hero-highlights w-container">
-      <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640c8-930b58d9" class="col-1row">
-        <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640c9-930b58d9" class="stack stack--stat-group">
-          <div id="w-node-bf7ddea1-1537-1ea4-590a-807fb649abdc-930b58d9" class="stack__layer">
+      <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74913-930b58d9" class="col-1row">
+        <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74914-930b58d9" class="stack stack--stat-group">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74915-930b58d9" class="stack__layer">
             <div class="hero-stat__left hide-mobile"></div>
           </div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640ca-930b58d9" class="stack__layer hide-mobile"><img src="images/sparkle-placeholder-1.svg" loading="lazy" alt="" class="temp-hide"></div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640cc-930b58d9" class="stack__layer">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74917-930b58d9" class="stack__layer hide-mobile"><img src="images/sparkle-placeholder-1.svg" loading="lazy" alt="" class="temp-hide"></div>
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74919-930b58d9" class="stack__layer">
             <div class="col-3row stat-group hero-highlights__left">
-              <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640ce-930b58d9" class="col-3row__mid">
+              <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7491b-930b58d9" class="col-3row__mid">
                 <p class="highlight highlight--caps2 highlight--gold-mobile">creators</p>
               </div>
-              <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640d1-930b58d9">
+              <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7491e-930b58d9">
                 <p class="highlight highlight--white2 highlight--caption">Expand your craft, community &amp; career</p>
               </div>
             </div>
@@ -158,111 +168,68 @@
           </div>
         </div>
       </div>
-      <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640d6-930b58d9" class="col-mid">
-        <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640d7-930b58d9" class="stack stack--stat-group">
-          <div id="w-node-_0b35f1bc-bb64-941a-0892-e0701d3a665c-930b58d9" class="stack__layer">
-            <div class="hero-stat__middle hide-mobile"></div>
+      <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74923-930b58d9" class="col-mid">
+        <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74924-930b58d9" class="stack stack--stat-group">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74925-930b58d9" class="stack__layer">
+            <div class="hero-stat__middle-left hide-mobile"></div>
+            <div class="hero-stat__middle-right hide-mobile"></div>
           </div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640d8-930b58d9" class="stack__layer hide-mobile"><img src="images/sparkle-placeholder-1.svg" loading="lazy" alt="" class="temp-hide"></div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640da-930b58d9" class="stack__layer">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74928-930b58d9" class="stack__layer hide-mobile"><img src="images/sparkle-placeholder-1.svg" loading="lazy" alt="" class="temp-hide"></div>
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7492a-930b58d9" class="stack__layer">
             <div class="col-3row stat-group">
-              <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640dc-930b58d9" class="col-3row__mid">
+              <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7492c-930b58d9" class="col-3row__mid">
                 <p class="highlight highlight--caps2 highlight--gold-mobile">Explorers</p>
               </div>
-              <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640df-930b58d9">
+              <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7492f-930b58d9">
                 <p class="highlight highlight--white2 highlight--caption">Hold $RARE to stake your claim in the new territory</p>
               </div>
             </div>
-            <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640e2-930b58d9" class="separator hide-desktop">
+            <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74932-930b58d9" class="separator hide-desktop">
               <div class="arrow-line"></div>
             </div>
           </div>
         </div>
       </div>
-      <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640e4-930b58d9" class="col-1row">
-        <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640e5-930b58d9" class="stack stack--stat-group">
-          <div id="w-node-_33eeff88-3209-9427-47dc-7bde6748afa2-930b58d9" class="stack__layer">
+      <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74934-930b58d9" class="col-1row">
+        <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74935-930b58d9" class="stack stack--stat-group">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74936-930b58d9" class="stack__layer">
             <div class="hero-stat__right hide-mobile"></div>
           </div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640e6-930b58d9" class="stack__layer hide-mobile"><img src="images/sparkle-placeholder-1.svg" loading="lazy" alt="" class="temp-hide"></div>
-          <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640e8-930b58d9" class="stack__layer">
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a74938-930b58d9" class="stack__layer hide-mobile"><img src="images/sparkle-placeholder-1.svg" loading="lazy" alt="" class="temp-hide"></div>
+          <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7493a-930b58d9" class="stack__layer">
             <div class="col-3row stat-group hero-highlights__right">
-              <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640ea-930b58d9" class="col-3row__mid">
+              <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7493c-930b58d9" class="col-3row__mid">
                 <p class="highlight highlight--caps2 highlight--gold-mobile">builders</p>
               </div>
-              <div id="w-node-_42fd1171-05fd-e9c7-885e-fbbb4f8640ed-930b58d9">
+              <div id="w-node-_3366d8c2-122b-9ef4-c6ad-385f41a7493f-930b58d9">
                 <p class="highlight highlight--white2 highlight--caption">Tools &amp; grants to plug your project into a network of 200k+ users</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div id="w-node-_040d3d9a-c831-7219-78fe-20c5302d925d-930b58d9" class="arrow-container arrow-container--hero-to-stats hide-mobile">
+        <div class="arrow-line"></div>
+      </div>
     </div>
   </section>
   <section class="section section--dark">
     <div class="background-wrapper">
-      <div class="background-hard-light">
-        <div class="image-cycler__child temp-hide w-embed w-script">
-          <style>
-  #imageContainer--stats {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
-  }
-  #imageContainer--stats img {
-    width: 100vw;
-  }
-</style>
-          <div id="imageContainer--stats">
-            <img id="currentImage--stats" src="art/art1-(Compressify.io).webp" alt="Artwork">
-          </div>
-          <script>
-  (function() {
-    var currentImageIndex = 1;
-    var totalImages = 22; // Set this to the total number of images
-    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
-    function cycleImagesStats() {
-        if(currentImageIndex > totalImages) {
-            currentImageIndex = 1;
-        }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
-        var img = new Image();
-        img.onload = function() {
-            document.getElementById('currentImage--stats').src = this.src;
-            currentImageIndex++;
-            // Schedule the next cycle
-            scheduleNextCycle();
-        };
-        img.onerror = function() {
-            currentImageIndex = 1;
-            // Schedule the next cycle, even on error
-            scheduleNextCycle();
-        };
-        img.src = nextImageSrc;
-    }
-    function scheduleNextCycle() {
-        var randomDuration = Math.random() * 1000 + 800; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
-        setTimeout(cycleImagesStats, randomDuration);
-    }
-    // Start the initial cycle
-    scheduleNextCycle();
-  })();
-</script>
-        </div><img src="images/art16-Compressify.io.webp" loading="lazy" sizes="100vw" srcset="images/art16-Compressify.io-p-500.webp 500w, images/art16-Compressify.io-p-800.webp 800w, images/art16-Compressify.io-p-1080.webp 1080w, images/art16-Compressify.io.webp 1600w" alt="">
-      </div>
+      <div class="background--stats"></div>
       <div class="background-dark-grey"></div>
     </div>
     <div class="w-layout-blockcontainer subsection3 subsection--hero-highlights subsection--hero-highlights--stats w-container">
+      <div id="w-node-d575eabb-bf11-658e-4cf5-bfd8f470ebb9-930b58d9" class="arrow-container arrow-container--hero-to-stats-bottom hide-mobile">
+        <div class="arrow-line arrow-line--white"></div><img src="images/arrow-head--black-2.svg" loading="lazy" alt="" class="arrow-head arrow-head--white">
+      </div>
       <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be66-930b58d9" class="col-1row">
         <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be67-930b58d9" class="stack stack--stat-group">
           <div id="w-node-_0a6e11ba-9ce6-3d28-caa8-e222ac8e22f7-930b58d9" class="stack__layer">
             <div class="hero-stat__left separator--white-offset hide-mobile"></div>
           </div>
-          <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be68-930b58d9" class="stack__layer"><img src="images/SuperRare-Symbol-white.svg" loading="lazy" alt="" class="stat-group__img-diamond">
+          <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be68-930b58d9" class="stack__layer offset-left-16"><img src="images/SuperRare-Symbol-white.svg" loading="lazy" alt="" class="stat-group__img-diamond">
             <div class="highlight highlight--caps2 highlight--white2">$315 million</div>
-            <div class="caption">Total volume<br> <br></div>
+            <div class="caption vert-offset-stat">Total volume<br></div>
           </div>
           <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be6e-930b58d9" class="separator hide-desktop">
             <div class="arrow-line arrow-line--white"></div>
@@ -272,11 +239,12 @@
       <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be70-930b58d9" class="col-mid">
         <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be71-930b58d9" class="stack stack--stat-group">
           <div id="w-node-_93a6ab2a-f308-14f1-cf91-f4b7edcaa83a-930b58d9" class="stack__layer">
-            <div class="hero-stat__middle separator--white-offset hide-mobile"></div>
+            <div class="hero-stat__middle-left separator--white-offset hide-mobile"></div>
+            <div class="hero-stat__middle-right separator--white-offset hide-mobile"></div>
           </div>
           <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be72-930b58d9" class="stack__layer"><img src="images/SuperRare-Symbol-white.svg" loading="lazy" alt="" class="stat-group__img-diamond">
             <div class="highlight highlight--caps2 highlight--gold">$2.86 trillion</div>
-            <div class="caption">Total addressable market<a href="https://www.deloitte.com/lu/en/services/financial-advisory/research/art-finance-report.html" target="_blank" class="link link--white link--asterisk"><sup class="superscript"> 1</sup></a>
+            <div class="caption vert-offset-stat">Total addressable market<a href="https://www.deloitte.com/lu/en/services/financial-advisory/research/art-finance-report.html" target="_blank" class="link link--white link--asterisk"><sup class="superscript"> 1</sup></a>
             </div>
           </div>
           <div class="separator hide-desktop">
@@ -289,7 +257,7 @@
           <div id="w-node-_21444cce-959f-b23a-358b-bca3a930bb8e-930b58d9" class="stack__layer">
             <div class="hero-stat__right separator--white-offset hide-mobile"></div>
           </div>
-          <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be7c-930b58d9" class="stack__layer"><img src="images/SuperRare-Symbol-white.svg" loading="lazy" alt="" class="stat-group__img-diamond">
+          <div id="w-node-_64029f8e-fb5a-417a-1be3-bb498260be7c-930b58d9" class="stack__layer offset-right-16"><img src="images/SuperRare-Symbol-white.svg" loading="lazy" alt="" class="stat-group__img-diamond">
             <div class="highlight highlight--caps2 highlight--white2">$54 million</div>
             <div class="caption">Generated for RareDAO community treasury</div>
           </div>
@@ -304,7 +272,6 @@
     <div class="w-layout-blockcontainer subsection3 w-container">
       <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c0fa-930b58d9" class="col-1row">
         <div id="w-node-e4812e60-f937-50a5-b45c-44d0cfbec955-930b58d9" class="stack">
-          <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c0fb-930b58d9" class="stack__layer hide-mobile"><img src="images/rare-radial-05.svg" loading="lazy" alt="" class="img-sparkle img-invert temp-flip-3"></div>
           <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c0fd-930b58d9" class="stack__layer">
             <p class="highlight highlight--caps2 highlight--white2">YOUR slice</p>
             <p class="highlight highlight--caps2 highlight--white2">of the</p>
@@ -314,13 +281,19 @@
         </div>
       </div>
       <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c100-930b58d9" class="col-mid col-mid--rare">
-        <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c101-930b58d9" class="jewel-box2 jewel-box--image jewel-box--rare"><img src="images/SuperRare-Symbol-black.svg" loading="lazy" alt="" class="rare-box--image-diamond">
-          <div class="caption headline--rare">$RARE</div>
-          <div class="highlight--caps2">The art coin</div>
-          <div class="background-wrapper">
-            <div class="jewel-box__background">
-              <div class="image-cycler__child w-embed w-script">
-                <style>
+        <div id="w-node-_87623d21-3ad0-ce0f-f240-e606cfc98956-930b58d9" class="stack">
+          <div id="w-node-a189f161-4fef-06c0-3adf-54cd79872508-930b58d9" class="stack__layer">
+            <div class="lottie-sparkle lottie-sparkle--rare" data-w-id="a6cf7860-3ccf-0b61-f584-fc38369e010c" data-animation-type="lottie" data-src="documents/data.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="7.083333333333333" data-duration="0"></div>
+          </div>
+          <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c101-930b58d9" class="jewel-box2 jewel-box--image jewel-box--rare">
+            <div class="rare-lockup-wrapper"><img src="images/SuperRare-Symbol-black.svg" loading="lazy" alt="" class="rare-box--image-diamond">
+              <div class="caption headline--rare">$RARE</div>
+              <div class="highlight--caps2">The art coin</div>
+            </div>
+            <div class="background-wrapper">
+              <div class="jewel-box__background">
+                <div class="image-cycler__child w-embed w-script">
+                  <style>
   #imageContainer--rare {
     position: absolute;
     top: 50%;
@@ -337,41 +310,48 @@
     height: 100%;
   }
 </style>
-                <div id="imageContainer--rare">
-                  <img id="currentImage--rare" src="art/art1-(Compressify.io).webp" alt="Artwork">
-                </div>
-                <script>
-  (function() {
-    var currentImageIndex = 1;
-    var totalImages = 22; // Set this to the total number of images
-    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
-    function cycleImagesRare() {
-        if(currentImageIndex > totalImages) {
-            currentImageIndex = 1;
-        }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
-        var img = new Image();
-        img.onload = function() {
-            document.getElementById('currentImage--rare').src = this.src;
-            currentImageIndex++;
-            // Schedule the next cycle
-            scheduleNextCycle();
-        };
-        img.onerror = function() {
-            currentImageIndex = 1;
-            // Schedule the next cycle, even on error
-            scheduleNextCycle();
-        };
-        img.src = nextImageSrc;
-    }
-    function scheduleNextCycle() {
-        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
-        setTimeout(cycleImagesRare, randomDuration);
-    }
-    // Start the initial cycle
-    scheduleNextCycle();
-  })();
+                  <div id="imageContainer--rare">
+                    <img id="currentImage--rare" src="art/art1-(Compressify.io).webp" alt="Artwork">
+                  </div>
+                  <script>
+                (function() {
+                  var currentImageIndex = 1;
+                  var totalImages = 22; // Set this to the total number of images
+                  var imageFolder = 'art/';
+                  function cycleImagesRare() {
+                    if(currentImageIndex > totalImages) {
+                      currentImageIndex = 1;
+                    }
+                    var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
+                    var img = new Image();
+                    img.onload = function() {
+                      document.getElementById('currentImage--rare').src = this.src;
+                      currentImageIndex++;
+                      // Determine whether to do a rapid cycle or a pause
+                      if (shouldPauseRare()) {
+                        // Pause for a second on this image
+                        setTimeout(cycleImagesRare, 4000);
+                      } else {
+                        // Rapid cycle through the next few images
+                        setTimeout(cycleImagesRare, 100);
+                      }
+                    };
+                    img.onerror = function() {
+                      currentImageIndex = 1;
+                      setTimeout(cycleImagesRare, 1000); // Pause before trying again
+                    };
+                    img.src = nextImageSrc;
+                  }
+                  function shouldPauseRare() {
+                    // Randomly decide to pause for a second on an image
+                    return Math.random() < 0.2; 
+                  }
+                  // Start the initial cycle
+                  cycleImagesRare(); 
+                })();
 </script>
+                </div>
+                <div class="div-block"></div>
               </div>
             </div>
           </div>
@@ -380,11 +360,14 @@
       <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c107-930b58d9" class="col-3row">
         <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c108-930b58d9" class="col-3row__mid">
           <div>
-            <div class="text-body">We’re reinventing the economics of human creativity by bringing art onchain. </div>
-            <div class="text-body">Hold $RARE to enjoy the revolution from the sidelines, or use the token to influence the platform and its treasury.</div>
+            <div class="text-body">Art is going digital. We’ve brought it onchain.</div>
+            <div class="text-body">Hold $RARE to enjoy from the sidelines, or use it to influence the movement.</div>
           </div>
         </div>
         <div id="w-node-_30e0c6fe-f01e-3605-f649-f8192485c10d-930b58d9" class="col-3row__bottom">
+          <div class="arrow-container arrow-container--rare hide-mobile">
+            <div class="arrow-line arrow-line--white"></div><img src="images/arrow-head--black-2.svg" loading="lazy" alt="" class="arrow-head arrow-head--white">
+          </div>
           <a href="https://docs.rare.xyz/staking-on-the-rare-dapp/how-to-get-usdrare" class="button button--gold w-button">Get $RARE</a>
         </div>
       </div>
@@ -397,7 +380,7 @@
           <div class="stack__layer">
             <p class="highlight highlight--caps2">Built on</p>
             <p class="highlight highlight--caps2">rare protocol</p>
-            <div class="arrow-container arrow-container--small">
+            <div class="arrow-container arrow-container--superrare">
               <div class="arrow-line"></div><img src="images/arrow-head--black-2.svg" loading="lazy" alt="" class="arrow-head">
             </div>
           </div>
@@ -419,7 +402,7 @@
       </div>
       <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c7-930b58d9" class="col-3row">
         <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c8-930b58d9" class="col-3row__mid">
-          <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c9-930b58d9" class="text-body">The first premiere marketplace for onchain artistry</div>
+          <div id="w-node-_5d642813-6530-4b6e-740b-3c04e67570c9-930b58d9" class="text-body">The first premiere marketplace for onchain creators</div>
           <div class="list-totem2">
             <div class="separator">
               <div class="arrow-line"></div>
@@ -450,57 +433,7 @@
   </section>
   <section class="section">
     <div class="background-wrapper">
-      <div class="background-hard-light">
-        <div class="image-cycler__child temp-hide w-embed w-script">
-          <style>
-  #imageContainer--dao {
-    display: flex;
-    justify-content: center;
-    align-items: top;
-    position: relative;
-    width: 100%;
-  }
-  #imageContainer--dao img {
-    width: 100vw;
-  }
-</style>
-          <div id="imageContainer--dao">
-            <img id="currentImage--dao" src="art/art1-(Compressify.io).webp" alt="Artwork">
-          </div>
-          <script>
-   (function() {
-    var currentImageIndex = 1;
-    var totalImages = 22; // Set this to the total number of images
-    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
-    function cycleImagesDao() {
-        if(currentImageIndex > totalImages) {
-            currentImageIndex = 1;
-        }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
-        var img = new Image();
-        img.onload = function() {
-            document.getElementById('currentImage--dao').src = this.src;
-            currentImageIndex++;
-            // Schedule the next cycle
-            scheduleNextCycle();
-        };
-        img.onerror = function() {
-            currentImageIndex = 1;
-            // Schedule the next cycle, even on error
-            scheduleNextCycle();
-        };
-        img.src = nextImageSrc;
-    }
-    function scheduleNextCycle() {
-        var randomDuration = Math.random() * 1000 + 800; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
-        setTimeout(cycleImagesDao, randomDuration);
-    }
-    // Start the initial cycle
-    scheduleNextCycle();
-  })();
-</script>
-        </div><img src="images/art4-Compressify.io.webp" loading="lazy" sizes="100vw" srcset="images/art4-Compressify.io-p-500.webp 500w, images/art4-Compressify.io-p-800.webp 800w, images/art4-Compressify.io-p-1080.webp 1080w, images/art4-Compressify.io.webp 1600w" alt="">
-      </div>
+      <div class="background--dao"></div>
       <div class="background-gold"></div>
     </div>
     <div class="w-layout-blockcontainer subsection3 w-container">
@@ -529,7 +462,6 @@
         <div id="w-node-f0794d54-1e87-f698-5027-a2edcb01a10c-930b58d9" class="col-3row__mid">
           <div class="text-body">$RARE holders can direct treasury spending, protocol development, and governance</div>
         </div>
-        <div id="w-node-f0794d54-1e87-f698-5027-a2edcb01a10f-930b58d9" class="col-3row__bottom"></div>
       </div>
     </div>
   </section>
@@ -547,7 +479,7 @@
           </div>
         </div>
         <div id="w-node-_9b950a75-f2ed-3562-003c-2a52c5d3077b-930b58d9" class="col-3row__mid"><img src="images/Curation-staking---Diamond-Lockup---white-on-alpha.svg" loading="lazy" alt="" class="img-curation-staking">
-          <div class="caption">Earn rewards by collecting, connecting, and curating.</div>
+          <div class="caption">Earn rewards by collecting, connecting, and curating</div>
         </div>
       </div>
       <div id="w-node-_7822d403-2309-38ee-82e6-b43f07fa7531-930b58d9" class="col-mid">
@@ -562,52 +494,63 @@
     justify-content: center;
     align-items: center;
   }
+  @media screen and (max-width: 479px) {
+    #imageContainer--staking {
+      height: 300px;
+    }
+  }
   #imageContainer--staking img {
     max-width: none;
     width: auto; 
     height: 40%;
     filter: brightness(200%) contrast(200%) saturate(0%);
     opacity: .7;
+    border-radius: 4px;
   }
 </style>
               <div id="imageContainer--staking">
                 <img id="currentImage--staking" src="art/art1-(Compressify.io).webp" alt="Artwork">
               </div>
               <script>
-  (function() {
-    var currentImageIndex = 1;
-    var totalImages = 22; // Set this to the total number of images
-    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
-    function cycleImagesStaking() {
-        if(currentImageIndex > totalImages) {
-            currentImageIndex = 1;
-        }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
-        var img = new Image();
-        img.onload = function() {
-            document.getElementById('currentImage--staking').src = this.src;
-            currentImageIndex++;
-            // Schedule the next cycle
-            scheduleNextCycle();
-        };
-        img.onerror = function() {
-            currentImageIndex = 1;
-            // Schedule the next cycle, even on error
-            scheduleNextCycle();
-        };
-        img.src = nextImageSrc;
-    }
-    function scheduleNextCycle() {
-        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
-        setTimeout(cycleImagesStaking, randomDuration);
-    }
-    // Start the initial cycle
-    scheduleNextCycle();
-  })();
+                (function() {
+                  var currentImageIndex = 1;
+                  var totalImages = 22; // Set this to the total number of images
+                  var imageFolder = 'art/';
+                  function cycleImagesStaking() {
+                    if(currentImageIndex > totalImages) {
+                      currentImageIndex = 1;
+                    }
+                    var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
+                    var img = new Image();
+                    img.onload = function() {
+                      document.getElementById('currentImage--staking').src = this.src;
+                      currentImageIndex++;
+                      // Determine whether to do a rapid cycle or a pause
+                      if (shouldPauseStaking()) {
+                        // Pause for a second on this image
+                        setTimeout(cycleImagesStaking, 4000);
+                      } else {
+                        // Rapid cycle through the next few images
+                        setTimeout(cycleImagesStaking, 100);
+                      }
+                    };
+                    img.onerror = function() {
+                      currentImageIndex = 1;
+                      setTimeout(cycleImagesStaking, 1000); // Pause before trying again
+                    };
+                    img.src = nextImageSrc;
+                  }
+                  function shouldPauseStaking() {
+                    // Randomly decide to pause for a second on an image
+                    return Math.random() < 0.2; 
+                  }
+                  // Start the initial cycle
+                  cycleImagesStaking(); 
+                })();
 </script>
             </div>
           </div>
-          <div id="w-node-_08afb6cc-dcc8-e7dd-6657-449bb5fa00c2-930b58d9" class="stack__layer"><img src="images/placeholder-staking3.png" loading="lazy" sizes="(max-width: 479px) 83vw, (max-width: 767px) 87vw, 160px" srcset="images/placeholder-staking3-p-500.png 500w, images/placeholder-staking3-p-800.png 800w, images/placeholder-staking3-p-1080.png 1080w, images/placeholder-staking3.png 1440w" alt="" class="image img-staking-graphic"></div>
+          <div id="w-node-_08afb6cc-dcc8-e7dd-6657-449bb5fa00c2-930b58d9" class="stack__layer"><img src="images/placeholder-staking-1.png" loading="lazy" sizes="(max-width: 479px) 83vw, (max-width: 767px) 87vw, 160px" srcset="images/placeholder-staking-1-p-500.png 500w, images/placeholder-staking-1-p-800.png 800w, images/placeholder-staking-1-p-1080.png 1080w, images/placeholder-staking-1.png 1440w" alt="" class="image img-staking-graphic"></div>
         </div>
       </div>
       <div id="w-node-_7822d403-2309-38ee-82e6-b43f07fa7538-930b58d9" class="col-3row z-bumper-5">
@@ -639,37 +582,53 @@
     </div>
   </section>
   <section class="section">
-    <div class="w-layout-blockcontainer subsection3 w-container">
-      <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14e1-930b58d9" class="col-1row">
-        <div id="w-node-_1056fe2a-6a73-25c8-ca86-2cb0dd9886cf-930b58d9" class="stack">
-          <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14e2-930b58d9" class="stack__layer hide-mobile"><img src="images/rare-radial-04.svg" loading="lazy" alt="" class="img-sparkle temp-flip-4"></div>
-          <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14e4-930b58d9" class="stack__layer">
-            <p class="highlight highlight--caps2">plug your</p>
-            <p class="highlight highlight--caps2">project into</p>
-            <p class="highlight highlight--caps2">the onchain art</p>
-            <p class="highlight highlight--caps2">community</p>
+    <div class="w-layout-blockcontainer subsection3 subsection--network w-container">
+      <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b046f-930b58d9" class="col-1row">
+        <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b0470-930b58d9" class="stack network-offset2">
+          <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b0471-930b58d9" class="stack__layer hide-mobile">
+            <div class="lottie-sparkle" data-w-id="b3fd783d-b411-acb0-7eb7-4f9a962b0472" data-animation-type="lottie" data-src="documents/data.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="7.083333333333333" data-duration="0"></div>
+          </div>
+          <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b0473-930b58d9" class="stack__layer">
+            <p class="highlight highlight--caps2">the platform</p>
+            <p class="highlight highlight--caps2">for art-tech</p>
+            <p class="highlight highlight--caps2">builders</p>
           </div>
         </div>
       </div>
-      <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14e7-930b58d9" class="col-mid"><img src="images/network-graphic.svg" loading="lazy" id="w-node-_8a57db74-fa38-1141-0bb6-80be7a158726-930b58d9" alt="" class="image img-network-diagram"></div>
-      <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14ee-930b58d9" class="col-3row">
-        <div id="w-node-ab33a5f7-0fb2-8f00-bc28-1bed2aea14ef-930b58d9" class="col-3row__mid stretcher">
+      <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b047a-930b58d9" class="col-mid">
+        <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b047b-930b58d9" class="stack__layer"><img src="images/Rare-Holders.svg" loading="lazy" alt="" class="img-rare-holders">
+          <div class="arrow-container arrow-container--network">
+            <div class="arrow-line"></div><img src="images/arrow-head--black-2.svg" loading="lazy" alt="" class="arrow-head">
+          </div><img src="images/Rare-Protocol---Diamond-Lockup---black-on-alpha.svg" loading="lazy" alt="" class="img-header-logo img-header-logo--network-graphic">
+          <div class="arrow-container arrow-container--network arrow-container--network--bottom">
+            <div class="arrow-line"></div><img src="images/arrow-head--black-2.svg" loading="lazy" alt="" class="arrow-head">
+          </div>
+        </div>
+      </div>
+      <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b0484-930b58d9" class="col-3row hide-mobile">
+        <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b0485-930b58d9" class="col-3row__mid stretcher network-offset">
+          <div class="text-body">Plug your project into a vast network of users.</div>
           <div class="text-body">Join us in changing the way art is created, experienced, valued &amp; exchanged.</div>
-          <a href="https://docs.rare.xyz/" class="button button--secondary-black w-button">Developer docs</a>
-          <a href="https://superrare.notion.site/Rare-Grants-af39b00269304ce8bbb4e2360137c50b" class="button button--secondary-black w-button">Explore grants</a>
         </div>
       </div>
     </div>
     <div class="w-layout-blockcontainer subsection3 subsection--partners w-container">
-      <div id="w-node-_6e969bfa-cba0-b6cd-ace8-5fc897153dd0-930b58d9" class="partners-container">
-        <div class="text-body highlight--caps2">Partners &amp; Integrations</div>
-        <div id="w-node-_5cfa8449-6abd-0ad3-1ee7-635f2c5dab13-930b58d9" class="name-list-wrapper w-richtext">
+      <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b048f-930b58d9" class="partners-containe-2"><img src="images/partners-label.svg" loading="lazy" alt="" class="img-partner-label">
+        <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b0491-930b58d9" class="name-list-wrapper w-richtext">
           <ul role="list" class="partner-list">
-            <li>Sothebys</li>
+            <li>SuperRare</li>
+            <li>•</li>
+            <li>Curation Staking</li>
+            <li>•</li>
+            <li>Artist Financing</li>
+            <li>•</li>
+            <li class="list-item--highlight">Your project here</li>
             <li>•</li>
             <li>Transient Labs</li>
             <li>•</li>
             <li>Botto</li>
+            <li>•</li>
+            <li>Sothebys</li>
             <li>•</li>
             <li>Lens</li>
             <li>•</li>
@@ -691,7 +650,148 @@
             <li>•</li>
             <li>Gucci</li>
             <li>•</li>
-            <li>Botfrens</li>
+            <li>BotFrens</li>
+            <li>•</li>
+            <li>LexDAO</li>
+            <li>•</li>
+            <li>Hats Protocol</li>
+            <li>•</li>
+            <li>Yuga Labs</li>
+            <li>•</li>
+            <li>Farcaster</li>
+            <li>•</li>
+            <li>Bello</li>
+            <li>•</li>
+            <li>Illiquid</li>
+            <li>•</li>
+            <li>Protofire</li>
+            <li>•</li>
+            <li>PaperClip Labs</li>
+            <li>•</li>
+            <li>Bonhams</li>
+            <li>•</li>
+            <li>Saatchi Art</li>
+            <li>•</li>
+            <li>Amanita</li>
+            <li>•</li>
+            <li>Fahey and Klein</li>
+            <li>•</li>
+            <li>Fellowship</li>
+            <li>•</li>
+            <li>Art Angels</li>
+            <li>•</li>
+            <li>Taglialatella Galleries</li>
+            <li>•</li>
+            <li>MONOLITH Gallery</li>
+            <li>•</li>
+            <li>Artifact</li>
+            <li>•</li>
+            <li>Scope Art Fair</li>
+            <li>•</li>
+            <li>Cube Art Fair</li>
+            <li>•</li>
+            <li>Time</li>
+            <li>•</li>
+            <li>Elle Decor</li>
+            <li>•</li>
+            <li>NARS</li>
+            <li>•</li>
+            <li>B&amp;O</li>
+            <li>•</li>
+            <li>Netgear / Meural</li>
+            <li>•</li>
+            <li>Samsung</li>
+            <li>•</li>
+            <li>Infinite Objects</li>
+            <li>•</li>
+            <li>Naval Ravikant</li>
+            <li>•</li>
+            <li>Mark Cuban</li>
+            <li>•</li>
+            <li>Alexis Ohanian</li>
+            <li>•</li>
+            <li>Chamath Palihapitiya</li>
+            <li>•</li>
+            <li>1confirmation</li>
+            <li>•</li>
+            <li>Collab Currency</li>
+            <li>•</li>
+            <li>Velvet Sea Ventures</li>
+          </ul>
+        </div>
+      </div>
+      <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b055d-930b58d9" class="stack__layer hide-desktop">
+        <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b055e-930b58d9" class="jewel-box2 jewel-box--dev-cta">
+          <div id="w-node-b3fd783d-b411-acb0-7eb7-4f9a962b055f-930b58d9" class="col-3row__mid stretcher">
+            <div class="text-body">Plug your project into a vast network of users.</div>
+            <div class="text-body">Join us in changing the way art is created, experienced, valued &amp; exchanged.</div>
+            <a href="https://superrare.notion.site/Rare-Grants-af39b00269304ce8bbb4e2360137c50b" class="button button--secondary-black w-button">Explore grants</a>
+            <a href="https://docs.rare.xyz/" class="button button--secondary-black w-button">Developer docs</a>
+          </div>
+        </div>
+      </div>
+      <div id="w-node-b523d164-f8de-d385-629e-f02d32f4ee91-930b58d9" class="dev-button-wrapper hide-mobile">
+        <a id="w-node-_057ef36f-30ba-19b5-2cb6-b68250060587-930b58d9" href="https://superrare.notion.site/Rare-Grants-af39b00269304ce8bbb4e2360137c50b" class="button button--secondary-black button--dev w-button">Explore grants</a>
+        <a id="w-node-ec862868-a314-3281-6a8c-773afea183d4-930b58d9" href="https://docs.rare.xyz/" class="button button--secondary-black button--dev w-button">Developer docs</a>
+      </div>
+    </div>
+  </section>
+  <section class="section temp-hide">
+    <div class="w-layout-blockcontainer subsection3 w-container">
+      <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490c2-930b58d9" class="col-1row">
+        <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490c3-930b58d9" class="stack">
+          <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490c4-930b58d9" class="stack__layer hide-mobile">
+            <div class="lottie-sparkle" data-w-id="1e63624c-1811-5b2c-a2d9-869869e490c5" data-animation-type="lottie" data-src="documents/data.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="7.083333333333333" data-duration="0"></div>
+          </div>
+          <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490c6-930b58d9" class="stack__layer">
+            <p class="highlight highlight--caps2">plug your</p>
+            <p class="highlight highlight--caps2">project into</p>
+            <p class="highlight highlight--caps2">the onchain art</p>
+            <p class="highlight highlight--caps2">community</p>
+          </div>
+        </div>
+      </div>
+      <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490cf-930b58d9" class="col-mid"><img src="images/network-graphic.svg" loading="lazy" id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490d0-930b58d9" alt="" class="image img-network-diagram"></div>
+      <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490d1-930b58d9" class="col-3row">
+        <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490d2-930b58d9" class="col-3row__mid stretcher">
+          <div class="text-body">Join us in changing the way art is created, experienced, valued &amp; exchanged.</div>
+          <a href="https://docs.rare.xyz/" class="button button--secondary-black w-button">Developer docs</a>
+          <a href="https://superrare.notion.site/Rare-Grants-af39b00269304ce8bbb4e2360137c50b" class="button button--secondary-black w-button">Explore grants</a>
+        </div>
+      </div>
+    </div>
+    <div class="w-layout-blockcontainer subsection3 subsection--partners w-container">
+      <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490da-930b58d9" class="partners-container">
+        <div class="text-body highlight--caps2">Partners &amp; Integrations</div>
+        <div id="w-node-_1e63624c-1811-5b2c-a2d9-869869e490dd-930b58d9" class="name-list-wrapper w-richtext">
+          <ul role="list" class="partner-list">
+            <li>Transient Labs</li>
+            <li>•</li>
+            <li>Botto</li>
+            <li>•</li>
+            <li>Sothebys</li>
+            <li>•</li>
+            <li>Lens</li>
+            <li>•</li>
+            <li>Gamma</li>
+            <li>•</li>
+            <li>Manifold</li>
+            <li>•</li>
+            <li>Musee d’Orsday</li>
+            <li>•</li>
+            <li>Coinbase</li>
+            <li>•</li>
+            <li>Blur</li>
+            <li>•</li>
+            <li>OpenSea</li>
+            <li>•</li>
+            <li>Foundation</li>
+            <li>•</li>
+            <li>Rainbow Wallet</li>
+            <li>•</li>
+            <li>Gucci</li>
+            <li>•</li>
+            <li>BotFrens</li>
             <li>•</li>
             <li>Artist Financing</li>
             <li>•</li>
@@ -760,28 +860,6 @@
             <li>Collab Currency</li>
             <li>•</li>
             <li>Velvet Sea Ventures</li>
-            <li>•</li>
-            <li>Chikai Ohazama</li>
-            <li>•</li>
-            <li>Artnome</li>
-            <li>•</li>
-            <li>Deadmau5</li>
-            <li>•</li>
-            <li>Madonna</li>
-            <li>•</li>
-            <li>Jim Carrey</li>
-            <li>•</li>
-            <li>Ross Ulbricht</li>
-            <li>•</li>
-            <li>Beeple</li>
-            <li>•</li>
-            <li>Jerry Garcia estate</li>
-            <li>•</li>
-            <li>Shepard Fairey</li>
-            <li>•</li>
-            <li>SuperRare</li>
-            <li>•</li>
-            <li>Curation Staking</li>
           </ul>
         </div>
       </div>
@@ -808,36 +886,41 @@
             <img id="currentImage--full" src="art/art1-(Compressify.io).webp" alt="Artwork">
           </div>
           <script>
-  (function() {
-    var currentImageIndex = 1;
-    var totalImages = 22; // Set this to the total number of images
-    var imageFolder = 'art/'; // Manually add this folder after Webflow export, with images titled 'art{n}.png'
-    function cycleImagesFull() {
-        if(currentImageIndex > totalImages) {
-            currentImageIndex = 1;
-        }
-        var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
-        var img = new Image();
-        img.onload = function() {
-            document.getElementById('currentImage--full').src = this.src;
-            currentImageIndex++;
-            // Schedule the next cycle
-            scheduleNextCycle();
-        };
-        img.onerror = function() {
-            currentImageIndex = 1;
-            // Schedule the next cycle, even on error
-            scheduleNextCycle();
-        };
-        img.src = nextImageSrc;
-    }
-    function scheduleNextCycle() {
-        var randomDuration = Math.random() * 400 + 200; // Duration between 0.1 and 1 seconds (100 to 1000 milliseconds)
-        setTimeout(cycleImagesFull, randomDuration);
-    }
-    // Start the initial cycle
-    scheduleNextCycle();
-  })();
+                (function() {
+                  var currentImageIndex = 1;
+                  var totalImages = 22; // Set this to the total number of images
+                  var imageFolder = 'art/';
+                  function cycleImagesFull() {
+                    if(currentImageIndex > totalImages) {
+                      currentImageIndex = 1;
+                    }
+                    var nextImageSrc = imageFolder + 'art' + currentImageIndex + '-(Compressify.io).webp';
+                    var img = new Image();
+                    img.onload = function() {
+                      document.getElementById('currentImage--full').src = this.src;
+                      currentImageIndex++;
+                      // Determine whether to do a rapid cycle or a pause
+                      if (shouldPauseFull()) {
+                        // Pause for a second on this image
+                        setTimeout(cycleImagesFull, 3000);
+                      } else {
+                        // Rapid cycle through the next few images
+                        setTimeout(cycleImagesFull, 100);
+                      }
+                    };
+                    img.onerror = function() {
+                      currentImageIndex = 1;
+                      setTimeout(cycleImagesFull, 1000); // Pause before trying again
+                    };
+                    img.src = nextImageSrc;
+                  }
+                  function shouldPauseFull() {
+                    // Randomly decide to pause for a second on an image
+                    return Math.random() < 0.2; 
+                  }
+                  // Start the initial cycle
+                  cycleImagesFull(); 
+                })();
 </script>
         </div>
       </div>
